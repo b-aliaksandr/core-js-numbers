@@ -7,6 +7,10 @@
  *                                                                                           *
  ******************************************************************************************* */
 
+const isPositiveNumbers = (numbers) => {
+  return numbers.some((num) => num < 0);
+};
+
 /**
  * Returns an area of a rectangle given by width and height.
  *
@@ -19,7 +23,7 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-  if (width <= 0 || height <= 0) {
+  if (isPositiveNumbers([width, height])) {
     throw new Error('The arguments should be positive');
   }
   return width * height;
