@@ -18,8 +18,11 @@
  *   5, 10 => 50
  *   5, 5  => 25
  */
-function getRectangleArea(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleArea(width, height) {
+  if (width <= 0 || height <= 0) {
+    throw new Error('The arguments should be positive');
+  }
+  return width * height;
 }
 
 /**
