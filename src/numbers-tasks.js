@@ -10,6 +10,9 @@
 const isPositiveNumbers = (numbers) => {
   return numbers.some((num) => num < 0);
 };
+const getDigitFromLast = (num, amount) => num % 10 ** amount;
+const getNumWithoutLastDigits = (num, amount) =>
+  Number.parseInt(num / 10 ** amount, 10);
 
 /**
  * Returns an area of a rectangle given by width and height.
@@ -297,8 +300,14 @@ function getSumToN(n) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  let sum = 0;
+  let partOfNum = num;
+  for (let i = 1; i < String(num).length + 1; i += 1) {
+    sum += getDigitFromLast(partOfNum, 1);
+    partOfNum = getNumWithoutLastDigits(partOfNum, 1);
+  }
+  return sum;
 }
 
 /**
